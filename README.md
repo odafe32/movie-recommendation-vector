@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 Movie Recommendation App
 
-## Getting Started
+A modern AI-powered web application that recommends similar movies using OpenAI embeddings and Astra DB vector search.
 
-First, run the development server:
+Built with [Next.js 14](https://nextjs.org/), hosted on [Vercel](https://vercel.com/).
+
+---
+
+## 🚀 Features
+
+- 🔍 View details of any movie
+- 🎯 See a list of recommended similar movies based on semantic similarity
+- 📊 Data stored in **Astra DB** (vector search enabled)
+- 🤖 Uses **OpenAI text-embedding-3-large** model for movie vectorization
+- ⚡ Fully server-side rendered & fast
+- 🌐 Hosted on **Vercel**
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 14](https://nextjs.org/)
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **Database:** [Astra DB Vector](https://www.datastax.com/astra)
+- **AI:** [OpenAI Embeddings API](https://platform.openai.com/docs/guides/embeddings)
+
+---
+
+## 🌟 Setup & Installation
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure Environment Variables
+
+Create a `.env.local` file in the root folder with your keys:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+ASTRA_DB_APPLICATION_TOKEN=your_astra_db_token
+OPENAI_API_KEY
+```
+
+### 4️⃣ Load Data
+
+If you have a `SAMPLE_DATA.csv` of movies:
+
+- Run the data import script (if you have one, e.g. `scripts/import.ts`) to insert the movies & vectors into Astra DB.
+
+Example:
+
+```bash
+npm run import
+```
+
+### 5️⃣ Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will run at: [http://localhost:3000](http://localhost:3000/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🧪 Deployment
 
-## Learn More
+You can deploy directly to [Vercel](https://vercel.com/):
 
-To learn more about Next.js, take a look at the following resources:
+- Push your project to GitHub
+- Connect GitHub repo to Vercel
+- In Vercel dashboard, set the environment variables (same as `.env.local`)
+- Deploy 🚀
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+app/
+  movie/[id]/page.tsx      # Movie details & recommendations page
+components/
+  MoviePoster.tsx          # Component to render a movie poster
+db.ts                      # Astra DB client
+types.ts                   # Type definitions
+scripts/import.ts          # Data import script (if applicable)
+.env.local                 # Environment variables (not committed)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📝 Notes
+
+- Make sure your OpenAI account has quota and correct API key.
+- Make sure your Astra DB has Vector Search enabled.
+- `.env.local` is ignored by git — don’t forget to configure variables in Vercel.
+
+---
+
+## 🔗 Links
+
+- 🌐 Live site: [https://your-app.vercel.app](https://your-app.vercel.app/)
+- 📚 Docs: [OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings), [Astra Vector DB](https://www.datastax.com/astra/astra-vector-db)
+
+---
+
+## 👨‍💻 Author
+
+- ✨ Odafe Godfrey ([@odafe32](https://github.com/yourhandle))
