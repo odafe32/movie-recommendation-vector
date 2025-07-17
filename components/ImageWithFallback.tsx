@@ -18,10 +18,13 @@ function ImageWithFallback({
   className = "",
   width = 300,
   height = 450,
-  fallbackSrc = "/placeholder-movie.png", // You can create a placeholder image
+  fallbackSrc = "/placeholder-movie.png",
 }: ImageWithFallbackProps) {
   const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
+
+  // Ensure alt is never empty or undefined
+  const imageAlt = alt || "Movie poster";
 
   const handleError = () => {
     if (!hasError) {
@@ -33,13 +36,17 @@ function ImageWithFallback({
   return (
     <div className={`relative ${className}`}>
       {hasError ? (
-        <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-lg">
+        <div
+          className="w-full h-full bg-gray-200 flex items-center justify-center rounded-lg"
+          style={{ width: width, height: height }}
+        >
           <div className="text-center text-gray-500">
             <svg
               className="mx-auto h-12 w-12 mb-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -54,7 +61,7 @@ function ImageWithFallback({
       ) : (
         <Image
           src={imgSrc}
-          alt={alt || "Movie poster"} // Ensure alt is never empty
+          alt={imageAlt}
           width={width}
           height={height}
           className={className}
