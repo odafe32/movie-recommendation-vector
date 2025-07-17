@@ -4,6 +4,8 @@ A modern AI-powered web application that recommends similar movies using OpenAI 
 
 Built with [Next.js 14](https://nextjs.org/), hosted on [Vercel](https://vercel.com/).
 
+This project is an **AI-powered Movie Recommendation and Search Platform** , centered around modern vector search technology. At its core, the application uses **OpenAI’s text-embedding-3-large model** to generate high-dimensional vector representations of movies based on their textual metadata. These vectors are stored and queried efficiently using **AstraDB’s vector database** , enabling fast and intelligent similarity searches. When a user views a movie, the app queries AstraDB to find and recommend the most similar movies by computing cosine similarity between vectors. In addition to recommendations, users can also search for specific titles and view detailed movie information in a clean, responsive interface built with Next.js 14, React, and TailwindCSS. The integration of OpenAI for embeddings and AstraDB for vector storage makes vector search the core innovation of this project, delivering an advanced and scalable movie discovery experience.
+
 ---
 
 ## 🚀 Features
