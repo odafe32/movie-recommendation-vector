@@ -14,7 +14,7 @@ async function MoviePage({
     id: string;
   };
 }) {
-  const movies = db.collection("tessst_movies");
+  const movies = db.collection("movies"); // Updated to correct collection name
 
   const search = await movies.find({ $and: [{ _id: id }] });
 
@@ -81,7 +81,16 @@ async function MoviePage({
         <div className="px-2 md:px-10 flex flex-col gap-y-2">
           <h1 className="text-6xl font-bold">{movie.Title}</h1>
           <p className="text-gray-600">{movie.Genre}</p>
-          <p className="font-light">{movie.$vectorize}</p>
+
+          {/* Display plot/description if available */}
+          {(movie.Plot || movie.$vectorize) && (
+            <div className="bg-gray-50 p-4 rounded-lg my-4">
+              <h3 className="text-lg font-semibold mb-2 text-gray-800">Plot</h3>
+              <p className="font-light text-gray-700 leading-relaxed">
+                {movie.Plot || movie.$vectorize}
+              </p>
+            </div>
+          )}
 
           <div className="mt-auto grid grid-cols-2">
             <div className="font-semibold">

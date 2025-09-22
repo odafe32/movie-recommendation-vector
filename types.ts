@@ -13,6 +13,7 @@ export type Movie = {
   Actors: string;
   Language: string;
   Country: string;
+  Plot: string;
   Awards: string;
   Poster: string;
   Metascore: string;

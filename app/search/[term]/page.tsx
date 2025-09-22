@@ -12,7 +12,7 @@ async function SearchTerm({
     term: string;
   };
 }) {
-  const movies = db.collection("tessst_movies");
+  const movies = db.collection("movies"); // Changed from "movviee_db" to "movies"
 
   const similarMovies = (await movies
     .find(
