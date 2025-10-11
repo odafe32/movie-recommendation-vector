@@ -12,30 +12,46 @@ function MoviePoster({
   movie: Movie | SimilarMovie;
 }) {
   return (
-    <Link key={movie._id} href={`/movie/${movie._id}`} className="">
-      <div className="relative">
-        <ImageWithFallback
-          className="min-w-64 max-w-64 h-96 object-cover rounded-lg shadow-lg"
-          src={movie.Poster}
-          alt={movie.Title}
-        />
-
-        {similarityRating && (
-          <div className="absolute w-14 h-14 flex items-center justify-center bottom-0 right-0 bg-orange-300 bg-opacity-90 p-2 rounded-full m-5 font-bold">
-            {similarityRating}%
+    <Link key={movie._id} href={`/movie/${movie._id}`} className="group">
+      <div className="relative overflow-hidden rounded-2xl">
+        {/* Gradient Glow Effect */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
+        
+        <div className="relative">
+          {/* Image Container */}
+          <div className="relative overflow-hidden rounded-2xl">
+            <ImageWithFallback
+              className="w-full h-96 object-cover rounded-2xl transform group-hover:scale-110 transition-transform duration-500"
+              src={movie.Poster}
+              alt={movie.Title}
+            />
+            
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
           </div>
-        )}
 
-        {index && (
-          <div className="absolute text-gray-100 top-32 -left-10 text-9xl font-extrabold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-            {index}
-          </div>
-        )}
+          {/* Similarity Rating Badge */}
+          {similarityRating && (
+            <div className="absolute bottom-4 right-4 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-600 rounded-full font-bold text-white text-lg shadow-lg border-2 border-white/20 backdrop-blur-sm">
+              {similarityRating}%
+            </div>
+          )}
+
+          {/* Index Number */}
+          {index && (
+            <div className="absolute text-white/10 top-24 -left-8 text-9xl font-black">
+              {index}
+            </div>
+          )}
+        </div>
       </div>
 
-      <div className="py-2">
-        <p className="text-lg font-semibold line-clamp-1 w-64">{movie.Title}</p>
-        <p className="text-gray-500 line-clamp-1">{movie.Genre}</p>
+      {/* Movie Info */}
+      <div className="mt-4 space-y-1">
+        <p className="text-lg font-bold text-gray-900 dark:text-white line-clamp-1 group-hover:text-purple-400 transition-colors">
+          {movie.Title}
+        </p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">{movie.Genre}</p>
       </div>
     </Link>
   );

@@ -69,68 +69,122 @@ async function MoviePage({
   }
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row items-center gap-y-10 p-10 pb-0">
-        <div className="shrink-0">
-          <ImageWithFallback
-            className="w-[300px] h-[450px] object-cover rounded-lg shadow-lg"
-            src={movie.Poster}
-            alt={movie.Title}
-          />
-        </div>
-        <div className="px-2 md:px-10 flex flex-col gap-y-2">
-          <h1 className="text-6xl font-bold">{movie.Title}</h1>
-          <p className="text-gray-600">{movie.Genre}</p>
-
-          {/* Display plot/description if available */}
-          {(movie.Plot || movie.$vectorize) && (
-            <div className="bg-gray-50 p-4 rounded-lg my-4">
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">Plot</h3>
-              <p className="font-light text-gray-700 leading-relaxed">
-                {movie.Plot || movie.$vectorize}
-              </p>
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+      {/* Hero Section with Movie Details */}
+      <div className="relative">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black to-black"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 py-12">
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            {/* Movie Poster */}
+            <div className="shrink-0 mx-auto lg:mx-0">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                <ImageWithFallback
+                  className="relative w-[320px] h-[480px] object-cover rounded-3xl shadow-2xl"
+                  src={movie.Poster}
+                  alt={movie.Title}
+                />
+              </div>
             </div>
-          )}
 
-          <div className="mt-auto grid grid-cols-2">
-            <div className="font-semibold">
-              <p>Directed by</p>
-              <p>Featuring</p>
-              <p>Box Office:</p>
-              <p>Released:</p>
-              <p>Runtime:</p>
-              <p>Rated:</p>
-              <p>IMDB Rating:</p>
-              <p>Language:</p>
-              <p>Country:</p>
-            </div>
-            <div>
-              <p>{movie.Director}</p>
-              <p>{movie.Actors}</p>
-              <p>{movie.BoxOffice}</p>
-              <p>{movie.Released}</p>
-              <p>{movie.Runtime}</p>
-              <p>{movie.Rated}</p>
-              <p>{movie.imdbRating}</p>
-              <p>{movie.Language}</p>
-              <p>{movie.Country}</p>
+            {/* Movie Info */}
+            <div className="flex-1 space-y-6">
+              <div>
+                <div className="inline-block mb-4">
+                  <div className="px-4 py-2 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-full border border-purple-500/30 backdrop-blur-sm">
+                    <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+                      {movie.Genre}
+                    </span>
+                  </div>
+                </div>
+                <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-4 tracking-tight leading-tight">
+                  {movie.Title}
+                </h1>
+              </div>
+
+              {/* Plot/Description */}
+              {(movie.Plot || movie.$vectorize) && (
+                <div className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm border border-gray-200 dark:border-zinc-800 rounded-2xl p-6">
+                  <h3 className="text-xl font-bold text-purple-400 mb-3">Plot</h3>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                    {movie.Plot || movie.$vectorize}
+                  </p>
+                </div>
+              )}
+
+              {/* Movie Details Grid */}
+              <div className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm border border-gray-200 dark:border-zinc-800 rounded-2xl p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Director</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.Director}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Featuring</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.Actors}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Box Office</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.BoxOffice}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Released</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.Released}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Runtime</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.Runtime}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Rated</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.Rated}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">IMDB Rating</p>
+                      <p className="text-gray-900 dark:text-white font-semibold flex items-center gap-2">
+                        <span className="text-yellow-400">⭐</span>
+                        {movie.imdbRating}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-white dark:text-gray-500 uppercase tracking-wider mb-1">Language</p>
+                      <p className="text-gray-900 dark:text-white font-semibold">{movie.Language}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="">
-        <h2 className="text-3xl pt-10 pl-10 font-bold ">
-          {hasVectorSearchError
-            ? "Movies from the same genre"
-            : "Similar Films you may like"}
-        </h2>
+      {/* Similar Movies Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="mb-12">
+          <div className="inline-block mb-4">
+            <div className="px-4 py-2 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-full border border-purple-500/30 backdrop-blur-sm">
+              <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">
+                Recommendations
+              </span>
+            </div>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tight">
+            {hasVectorSearchError
+              ? "Movies from the same genre"
+              : "Similar Films You May Like"}
+          </h2>
+        </div>
 
         {hasVectorSearchError && (
-          <div className="pl-10 pr-10 mb-4">
-            <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded">
-              <p className="font-medium">Note:</p>
-              <p>
+          <div className="mb-8">
+            <div className="bg-yellow-900/20 border border-yellow-600/30 text-yellow-300 p-6 rounded-2xl backdrop-blur-sm">
+              <p className="font-bold mb-2">⚠️ Note:</p>
+              <p className="text-yellow-200/80">
                 AI-powered recommendations are temporarily unavailable. Showing
                 movies from the same genre instead.
               </p>
@@ -139,7 +193,7 @@ async function MoviePage({
         )}
 
         {similarMovies.length > 0 ? (
-          <div className="flex justify-between items-center lg:flex-row gap-x-20 gap-y-10 pl-20 pr-10 py-10 overflow-x-scroll">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {similarMovies.map((movie, i) => (
               <MoviePoster
                 key={movie._id}
@@ -154,10 +208,10 @@ async function MoviePage({
             ))}
           </div>
         ) : (
-          <div className="pl-10 pr-10 py-10">
-            <div className="bg-gray-100 border border-gray-300 text-gray-700 p-8 rounded text-center">
-              <p className="text-lg font-medium">No similar movies found</p>
-              <p>
+          <div className="py-20">
+            <div className="bg-white/50 dark:bg-zinc-900/50 border border-gray-200 dark:border-zinc-800 text-gray-700 dark:text-gray-300 p-12 rounded-2xl text-center backdrop-blur-sm">
+              <p className="text-2xl font-bold mb-2">No similar movies found</p>
+              <p className="text-gray-400">
                 Try browsing our movie collection or search for specific titles.
               </p>
             </div>
