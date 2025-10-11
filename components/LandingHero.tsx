@@ -64,11 +64,11 @@ export default function LandingHero() {
         {/* Hero Content */}
         <div className="max-w-6xl mx-auto text-center space-y-12 relative z-10">
           {/* Icon/Logo with Premium Effect */}
-          <div className="flex justify-center mb-8 animate-scaleIn">
+          <div className="flex justify-center mb-6 sm:mb-8 animate-scaleIn">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-500 animate-pulse"></div>
-              <div className="relative bg-gradient-to-br from-purple-600 to-blue-600 p-6 rounded-3xl shadow-2xl transform group-hover:scale-110 transition-all duration-300 animate-float">
-                <FilmIcon className="h-20 w-20 text-white" strokeWidth={1.5} />
+              <div className="relative bg-gradient-to-br from-purple-600 to-blue-600 p-4 sm:p-6 rounded-3xl shadow-2xl transform group-hover:scale-110 transition-all duration-300 animate-float">
+                <FilmIcon className="h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20 text-white" strokeWidth={1.5} />
               </div>
             </div>
           </div>
@@ -82,56 +82,56 @@ export default function LandingHero() {
               </div>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tight leading-none">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 dark:text-white tracking-tight leading-tight">
               Discover Your
               <span className="block mt-2 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
                 Perfect Movie
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light px-4">
               Experience the future of movie discovery with our advanced AI. 
               Simply describe what you're in the mood for, and we'll find your perfect match.
             </p>
           </div>
 
           {/* Premium Search Bar */}
-          <div className="max-w-3xl mx-auto mt-16 animate-slideInUp">
+          <div className="max-w-3xl mx-auto mt-8 md:mt-16 animate-slideInUp px-4">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500 animate-gradient-slow"></div>
-              <div className="relative flex items-center bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-zinc-800 shadow-2xl overflow-hidden">
-                <div className="flex-1 flex items-center px-6 py-6">
-                  <MagnifyingGlassIcon className="h-6 w-6 text-gray-400 mr-4" />
+              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-zinc-800 shadow-2xl overflow-hidden">
+                <div className="flex-1 flex items-center px-4 sm:px-6 py-4 sm:py-6">
+                  <MagnifyingGlassIcon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400 mr-3 sm:mr-4 flex-shrink-0" />
                   <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Try 'thrilling space adventure' or 'heartwarming romance'..."
-                    className="flex-1 text-lg outline-none bg-transparent text-gray-900 dark:text-white placeholder-gray-500"
+                    className="flex-1 text-base sm:text-lg outline-none bg-transparent text-gray-900 dark:text-white placeholder-gray-500"
                     aria-label="Search for movies"
                   />
                 </div>
                 <button
                   onClick={handleSearch}
-                  className="m-2 px-10 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-bold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 flex items-center gap-3 shadow-lg hover:shadow-purple-500/50 transform hover:scale-105"
+                  className="m-2 mx-4 mb-4 sm:m-2 sm:mx-2 px-6 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-bold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 flex items-center justify-center gap-2 sm:gap-3 shadow-lg hover:shadow-purple-500/50 transform hover:scale-105"
                   aria-label="Search movies"
                 >
-                  <span className="text-lg">Search</span>
-                  <BoltIcon className="h-5 w-5" />
+                  <span className="text-sm sm:text-lg">Search</span>
+                  <BoltIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12 animate-slideInUp">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-8 sm:mt-12 animate-slideInUp px-4">
             <button
               onClick={() => router.push("/browse")}
-              className="group px-10 py-5 bg-gray-100 dark:bg-white/5 backdrop-blur-sm text-gray-900 dark:text-white rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-white/10 transition-all duration-300 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 flex items-center gap-3 shadow-xl hover:shadow-2xl transform hover:scale-105"
+              className="group w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-gray-100 dark:bg-white/5 backdrop-blur-sm text-gray-900 dark:text-white rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-white/10 transition-all duration-300 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              <FilmIcon className="h-6 w-6 group-hover:rotate-12 transition-transform" />
-              <span className="text-lg">Browse Collection</span>
+              <FilmIcon className="h-5 w-5 sm:h-6 sm:w-6 group-hover:rotate-12 transition-transform" />
+              <span className="text-base sm:text-lg">Browse Collection</span>
             </button>
           </div>
         </div>
@@ -146,10 +146,10 @@ export default function LandingHero() {
                 <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">About Us</span>
               </div>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6">
               Revolutionizing Movie Discovery
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               We're on a mission to help you find the perfect movie every time, powered by cutting-edge AI technology.
             </p>
           </div>
@@ -193,7 +193,7 @@ export default function LandingHero() {
                 <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">Features</span>
               </div>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6">
               Why Choose MovieAI?
             </h2>
           </div>
@@ -256,10 +256,10 @@ export default function LandingHero() {
                 <span className="text-sm font-semibold text-purple-300 uppercase tracking-wider">Get In Touch</span>
               </div>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6">
               Let's Connect
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Have questions or feedback? We'd love to hear from you!
             </p>
           </div>
